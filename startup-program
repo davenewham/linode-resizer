@@ -1,0 +1,13 @@
+#!/bin/bash
+
+total_ram=$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))
+
+# Ensure ram is greater than 4GB
+# Starts program only when at a custom size
+
+if [ $total_ram -ge "3936" ]; then
+        # Call function with *0.90 total ram
+        ram=$(($total_ram*90/100))
+        echo $ram
+        ./start.sh $ram
+fi
